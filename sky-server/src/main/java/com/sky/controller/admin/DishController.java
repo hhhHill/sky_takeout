@@ -2,6 +2,7 @@ package com.sky.controller.admin;
 
 import com.sky.dto.DishDTO;
 import com.sky.dto.DishPageQueryDTO;
+import com.sky.entity.Dish;
 import com.sky.result.PageResult;
 import com.sky.result.Result;
 import com.sky.service.DishService;
@@ -66,12 +67,12 @@ public class DishController {
     }
 
     /**
-     * 根据菜品id来查询菜品和对应的口味数据
+     * 根据菜品id查询菜品
      * @param id
      * @return
      */
     @GetMapping("/{id}")
-    @ApiOperation("根据菜品id来查询菜品信息")
+    @ApiOperation("根据菜品id查询菜品")
     public Result<DishVO> getById(@PathVariable Long id) {
         DishVO dishVO = dishService.getByIdWithFlavor(id);
         return Result.success(dishVO);
@@ -102,5 +103,17 @@ public class DishController {
         log.info("修改菜品：{}", dishDTO);
         dishService.updateWithFlavor(dishDTO);
         return Result.success();
+    }
+
+    /**
+     * 根据分类id查询菜品
+     * @param categoryId
+     * @return
+     */
+    @GetMapping
+    @ApiOperation("根据分类id查询菜品")
+    public Result<List<Dish>> list(Long categoryId) {
+        List<Dish> list = dishService.list(categoryId);
+        return Result.success(list);
     }
 }
