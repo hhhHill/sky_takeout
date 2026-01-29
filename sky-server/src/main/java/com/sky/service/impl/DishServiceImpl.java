@@ -82,7 +82,6 @@ public class DishServiceImpl implements DishService {
      */
     @Override
     public void deleteBatch(List<Long> ids) {
-
         //判断当前菜品能不能删除--起售中？在套餐中？
         for (Long id : ids) {
             Dish dish = dishMapper.getById(id);
