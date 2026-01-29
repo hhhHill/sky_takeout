@@ -35,4 +35,17 @@ public interface SetmealService {
      * @return
      */
     SetmealVO getByIdWithDish(Long id);
+
+    /**
+     * 修改套餐
+     * @param setmealDTO
+     */
+    void update(SetmealDTO setmealDTO);
+
+    /**
+     * 起售停售套餐
+     * @param status
+     * @param id
+     */
+    void startOrStop(Integer status, Long id);
 }
