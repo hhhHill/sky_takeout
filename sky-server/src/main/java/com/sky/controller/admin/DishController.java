@@ -110,7 +110,7 @@ public class DishController {
      * @param categoryId
      * @return
      */
-    @GetMapping
+    @GetMapping("/list")
     @ApiOperation("根据分类id查询菜品")
     public Result<List<Dish>> list(Long categoryId) {
         List<Dish> list = dishService.list(categoryId);
