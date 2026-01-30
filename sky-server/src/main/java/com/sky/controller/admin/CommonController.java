@@ -31,7 +31,6 @@ public class CommonController {
     @PostMapping("/upload")
     @ApiOperation("上传文件功能")
     public Result<String> upload(MultipartFile file) {
-        log.info("文件上传:{}", file);
         try {
             //拼接UUID文件名，保证文件名唯一
             String objectName = UUID.randomUUID().toString() + ExtensionNameUtil.getExtensionName(file);

@@ -35,7 +35,6 @@ public class DishController {
     @PostMapping
     @ApiOperation("新增菜品")
     public Result save(@RequestBody DishDTO dishDTO) {
-        log.info("新增菜品： {}",  dishDTO);
         dishService.saveWithFlavor(dishDTO);
         return Result.success();
     }
@@ -48,7 +47,6 @@ public class DishController {
     @GetMapping("/page")
     @ApiOperation("菜品分页查询")
     public Result<PageResult> pageQuery(DishPageQueryDTO dishPageQueryDTO) {
-        log.info("分页查询菜品： {}", dishPageQueryDTO);
         PageResult pageResult = dishService.pageQuery(dishPageQueryDTO);
         return Result.success(pageResult);
     }
@@ -61,7 +59,6 @@ public class DishController {
     @DeleteMapping
     @ApiOperation("菜品批量删除")
     public Result delete(@RequestParam List<Long> ids) {
-        log.info("菜品批量删除: {}", ids);
         dishService.deleteBatch(ids);
         return Result.success();
     }
@@ -87,7 +84,6 @@ public class DishController {
     @PostMapping("/status/{status}")
     @ApiOperation("起售停售菜品")
     public Result startOrStop(@PathVariable Integer status, Long id) {
-        log.info("起售禁售菜品： {},{}", status, id);
         dishService.startOrStop(status, id);
         return Result.success();
     }
@@ -100,7 +96,6 @@ public class DishController {
     @PutMapping
     @ApiOperation("修改菜品")
     public Result update(@RequestBody DishDTO dishDTO) {
-        log.info("修改菜品：{}", dishDTO);
         dishService.updateWithFlavor(dishDTO);
         return Result.success();
     }

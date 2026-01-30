@@ -33,8 +33,6 @@ public class AutoFillAspect {
      */
     @Before("autoFillPointCut()")
     public void autoFill(JoinPoint joinPoint){
-        log.info("开始进行公共字段填充...");
-
         //获取当前被拦截的方法上的数据库操作类型
         MethodSignature signature = (MethodSignature) joinPoint.getSignature(); //方法签名对象
         Method method = signature.getMethod();
